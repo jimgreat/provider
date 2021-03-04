@@ -1,12 +1,12 @@
 package com.dubbo.back;
 
-import org.apache.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.service.GenericException;
 import org.apache.dubbo.rpc.service.GenericService;
 
 import java.util.concurrent.CompletableFuture;
 
-@Service(version = "1.0.0",interfaceName = "com.test.hi")
+@DubboService(version = "1.0.0",interfaceName = "com.test.hi")
 public class GenericImpl implements GenericService
 {
     @Override

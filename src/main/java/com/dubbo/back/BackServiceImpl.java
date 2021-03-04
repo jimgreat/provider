@@ -3,7 +3,8 @@ package com.dubbo.back;
 import com.jm.business.entity.Game;
 import com.jm.business.entity.User;
 import com.jm.business.service.GameService;
-import org.apache.dubbo.config.annotation.Service;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
@@ -11,7 +12,8 @@ import java.util.Collections;
 import java.util.List;
 
 
-@Service(version = "1.0.0")
+@DubboService(version = "1.0.0")
+@Slf4j
 public class BackServiceImpl implements BackService {
 
     @Autowired
@@ -30,6 +32,8 @@ public class BackServiceImpl implements BackService {
     {
         List<Game> li = gameService.list();
         int cnt = li.size();
-        return "I'm Back 2 ["+msg+" with cnt:"+cnt+"]";
+        String r = "I'm Back 2 ["+msg+" with cnt:"+cnt+"]";
+        log.info(r);
+        return r;
     }
 }
