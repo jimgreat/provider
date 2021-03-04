@@ -1,7 +1,6 @@
 package com.dubbo.service;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -17,7 +16,6 @@ public class DemoServiceStub implements DemoService {
     public Object test() {
         String str = String.valueOf(demoService.test());
         return JSON.parseObject(str);
-//        return demoService.test();
     }
 
     @Override
