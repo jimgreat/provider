@@ -39,8 +39,8 @@ public class DefaultService implements DemoService {
     @DubboReference(version = "1.0.0")
     private BackService backService;
 
-    @DubboReference(version = "1.0.0",interfaceName = "com.test.hi")
-    private GenericService genericService;
+//    @DubboReference(version = "1.0.0",interfaceName = "com.test.hi")
+//    private GenericService genericService;
 
     @Override
     public Object test() {
@@ -51,9 +51,9 @@ public class DefaultService implements DemoService {
 
     @Override
     public String sayName(String name) {
-        return String.format("Service [name :%s ] %s : Hello,%s",
+        return String.format("Service [name :%s ]  Hello,%s",
                 backService.back("from DefaultService"),
-                genericService.$invoke("hi",null,null),
+//                genericService.$invoke("hi",null,null),
                 name);
     }
 
