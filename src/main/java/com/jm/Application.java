@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication()
 @MapperScan("com.jm.business.mapper")
-@EnableDubbo(scanBasePackages = "com.dubbo.back")
+@EnableDubbo(scanBasePackages = {"com.dubbo.back","com.dubbo.service"})
 public class Application  {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

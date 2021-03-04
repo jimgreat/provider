@@ -18,12 +18,10 @@ package com.dubbo.service;
 
 import com.alibaba.fastjson.JSON;
 import com.dubbo.back.BackService;
-import org.apache.dubbo.config.annotation.Reference;
-import org.apache.dubbo.config.annotation.Service;
-import org.apache.dubbo.rpc.RpcContext;
+import org.apache.dubbo.config.annotation.DubboReference;
+import org.apache.dubbo.config.annotation.DubboService;
 
 import org.apache.dubbo.rpc.service.GenericService;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,16 +33,13 @@ import java.util.concurrent.CompletableFuture;
  *
  * @since 2.6.5
  */
-@Service(version = "${demo.service.version}")
+@DubboService(version = "1.0.0")
 public class DefaultService implements DemoService {
 
-    @Value("${demo.service.name}")
-    private String serviceName;
-
-    @Reference(version = "1.0.0")
+    @DubboReference(version = "1.0.0")
     private BackService backService;
 
-    @Reference(version = "1.0.0",interfaceName = "com.test.hi")
+    @DubboReference(version = "1.0.0",interfaceName = "com.test.hi")
     private GenericService genericService;
 
     @Override
@@ -57,7 +52,7 @@ public class DefaultService implements DemoService {
     @Override
     public String sayName(String name) {
         return String.format("Service [name :%s ] %s : Hello,%s",
-                backService.back(serviceName),
+                backService.back("from DefaultService"),
                 genericService.$invoke("hi",null,null),
                 name);
     }
